@@ -1,17 +1,11 @@
-const nodeExternals = require('webpack-node-externals');
 const path = require('path');
+const HTMLPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  target: 'node',
-  node: {
-    __dirname: false,
-    __filename: false,
-  },
-  externals: [nodeExternals({ modulesDir: path.resolve(__dirname, '../node_modules') })],
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         use: {
           loader: 'ts-loader',
           options: {
@@ -24,4 +18,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.mjs', '.wasm'],
   },
+  plugins: [
+    new HTMLPlugin({
+      template: path.join(__dirname, 'src/index.html'),
+    }),
+  ],
 };
