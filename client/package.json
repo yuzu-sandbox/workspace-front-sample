@@ -7,7 +7,7 @@
     "prebuild": "run-s clean",
     "build": "webpack -p",
     "prebuild:dev": "run-s clean",
-    "build:dev": "webpack -d -w"
+    "build:dev": "webpack -d"
   },
   "dependencies": {
     "react": "^16.13.1",

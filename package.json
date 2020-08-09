@@ -8,11 +8,14 @@
   ],
   "scripts": {
     "s-build": "yarn workspace server run build",
-    "s-build:dev": "yarn workspace server run build:dev",
+    "s-build:dev": "yarn workspace server run build:dev -w",
     "c-build": "yarn workspace client run build",
-    "c-build:dev": "yarn workspace client run build:dev",
+    "c-build:dev": "yarn workspace client run build:dev -w",
     "build": "run-s c-build s-build",
-    "build:dev": "run-p c-build:dev s-build:dev"
+    "build:dev": "run-p c-build:dev s-build:dev",
+    "s-start": "yarn workspace server run start:dev",
+    "prestart:dev": "yarn workspace server run build:dev",
+    "start:dev": "run-p c-build:dev s-build:dev s-start"
   },
   "devDependencies": {
     "husky": "^4.2.5",
